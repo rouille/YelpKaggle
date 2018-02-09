@@ -19,3 +19,7 @@ def path_to_tensor(img_path):
     x = image.img_to_array(img)
     # convert 3D tensor to 4D tensor with shape (1, 224, 224, 3) and return 4D tensor
     return numpy.expand_dims(x, axis = 0)
+
+def paths_to_tensor(img_paths):
+    tensors = [path_to_tensor(img_path) for img_path in tqdm.tqdm(img_paths)]
+    return numpy.vstack(tensors)
