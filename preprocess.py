@@ -7,8 +7,7 @@ from keras.preprocessing import image
 
 def path_to_images(img_dir):
     images = glob.glob(img_dir + '/' + '*.jpg')
-    extract_tag = lambda x: int(re.match('.*/([0-9]+).jpg', x).group(1))
-    tags = map(extract_tag, images)
+    tags = [int(re.match('.*/([0-9]+).jpg', t).group(1)) for t in images]
 
     return images, tags
 
