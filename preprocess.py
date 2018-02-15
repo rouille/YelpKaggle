@@ -32,3 +32,10 @@ def path_to_tensor(img_path):
 def paths_to_tensor(img_paths):
     tensors = [path_to_tensor(img_path) for img_path in tqdm.tqdm(img_paths)]
     return numpy.vstack(tensors)
+
+
+def load_dataset(file):
+    data = numpy.load(file)
+    images = data['img']
+    targets = data['target']
+    return images, targets
