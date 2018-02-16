@@ -62,4 +62,8 @@ def history(model):
 
 
 def true_pos(y_true, y_pred):
-    return numpy.sum(y_true * np.round(y_pred))
+    return numpy.sum(y_true * numpy.round(y_pred))
+
+
+def false_pos(y_true, y_pred):
+    return numpy.sum(y_true * (1. - numpy.round(y_pred)))
