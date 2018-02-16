@@ -2,8 +2,10 @@ import glob
 import re
 import tqdm
 import numpy
+import matplotlib.pyplot as plt
 
 from keras.preprocessing import image
+
 
 def path_to_images(img_dir):
     images = glob.glob(img_dir + '/' + '*.jpg')
@@ -39,3 +41,21 @@ def load_dataset(file):
     images = data['img']
     targets = data['target']
     return images, targets
+
+
+def history(model):
+    plt.figure(figsize = (15, 5) )
+
+    plt.subplot(121)
+    plt.plot(model.history['loss'], color = 'blue', label = 'train')
+    plt.plot(model.history['val_loss'], color = 'red', label = 'valid')
+    plt.legend()
+    plt.xlabel('Epoch')
+    plt.ylabel('Loss Function')
+
+    plt.subplot(122)
+    plt.plot(model.history['acc'], color = 'blue', label = 'train')
+    plt.plot(model.history['val_acc'], color = 'red', label = 'valid')
+    plt.legend()
+    plt.xlabel('Epoch')
+    plt.ylabel('Accuracy')
