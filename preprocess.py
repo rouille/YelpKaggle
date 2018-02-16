@@ -59,3 +59,7 @@ def history(model):
     plt.legend()
     plt.xlabel('Epoch')
     plt.ylabel('Accuracy')
+
+
+def true_pos(y_true, y_pred):
+    return numpy.sum(y_true * np.round(y_pred))
