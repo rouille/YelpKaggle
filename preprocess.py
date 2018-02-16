@@ -71,3 +71,10 @@ def false_pos(y_true, y_pred):
 
 def false_neg(y_true, y_pred):
     return numpy.sum((1. - y_true) * numpy.round(y_pred))
+
+
+def precision(y_true, y_pred):
+    return true_pos(y_true, y_pred) / (true_pos(y_true, y_pred) + false_pos(y_true, y_pred))
+
+def recall(y_true, y_pred):
+    return true_pos(y_true, y_pred) / (true_pos(y_true, y_pred) + false_neg(y_true, y_pred))
