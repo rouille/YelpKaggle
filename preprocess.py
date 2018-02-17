@@ -47,15 +47,15 @@ def history(model):
     plt.figure(figsize = (15, 5) )
 
     plt.subplot(121)
-    plt.plot(model.history['loss'], color = 'blue', label = 'train')
-    plt.plot(model.history['val_loss'], color = 'red', label = 'valid')
+    plt.plot(model.history['loss'], color='blue', label='train')
+    plt.plot(model.history['val_loss'], color='red', label='valid')
     plt.legend()
     plt.xlabel('Epoch')
     plt.ylabel('Loss Function')
 
     plt.subplot(122)
-    plt.plot(model.history['acc'], color = 'blue', label = 'train')
-    plt.plot(model.history['val_acc'], color = 'red', label = 'valid')
+    plt.plot(model.history['acc'], color = 'blue', label='train')
+    plt.plot(model.history['val_acc'], color='red', label='valid')
     plt.legend()
     plt.xlabel('Epoch')
     plt.ylabel('Accuracy')
@@ -78,3 +78,6 @@ def precision(y_true, y_pred):
 
 def recall(y_true, y_pred):
     return true_pos(y_true, y_pred) / (true_pos(y_true, y_pred) + false_neg(y_true, y_pred))
+
+def f1_score(y_true, y_pred):
+    return 2. / (1. / recall(y_true, y_pred) + 1. / precision(y_true, y_pred))
