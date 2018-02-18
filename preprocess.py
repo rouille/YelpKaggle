@@ -1,7 +1,7 @@
 import glob
 import re
 import tqdm
-import numpy
+import numpy as np
 import matplotlib.pyplot as plt
 
 from keras.preprocessing import image
@@ -15,29 +15,29 @@ def path_to_images(img_dir):
 
 
 def encode_label(labels):
-    target = numpy.zeros(9, dtype = 'int')
+    target = np.zeros(9, dtype = 'int')
     for l in labels:
         target[l] = 1
     return target
 
 
 def decode_label(x):
-    return tuple(numpy.where(x == 1)[0])
+    return tuple(np.where(x == 1)[0])
 
 
 def path_to_tensor(img_path):
     img = image.load_img(img_path, target_size = (224, 224) )
     x = image.img_to_array(img)
-    return numpy.expand_dims(x, axis = 0)
+    return np.expand_dims(x, axis = 0)
 
 
 def paths_to_tensor(img_paths):
     tensors = [path_to_tensor(img_path) for img_path in tqdm.tqdm(img_paths)]
-    return numpy.vstack(tensors)
+    return np.vstack(tensors)
 
 
 def load_dataset(file):
-    data = numpy.load(file)
+    data = np.load(file)
     images = data['img']
     targets = data['target']
     return images, targets
@@ -62,15 +62,15 @@ def history(model):
 
 
 def true_pos(y_true, y_pred):
-    return numpy.sum(y_true * numpy.round(y_pred))
+    return np.sum(y_true * np.round(y_pred))
 
 
 def false_pos(y_true, y_pred):
-    return numpy.sum(y_true * (1. - numpy.round(y_pred)))
+    return np.sum(y_true * (1. - np.round(y_pred)))
 
 
 def false_neg(y_true, y_pred):
-    return numpy.sum((1. - y_true) * numpy.round(y_pred))
+    return np.sum((1. - y_true) * np.round(y_pred))
 
 
 def precision(y_true, y_pred):
