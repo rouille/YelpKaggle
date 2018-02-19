@@ -25,3 +25,4 @@ Here is a short description of the different files available in this directory:
 * `split_data.ipynb`: preprocessing. The training dataset (234842 photographs) is split into a training (75%), validation(12.5%) and test (12.5%) datasets.
 * `bottleneck.ipynb`: bottleneck features from state-of-the-art pre-trained deep learning models. For a small fraction of the available training, validation and test data, we store the last activation map before the fully connected layers for the VGG16, Xception and ResNet50 deep learning models.
 * `compare.ipynb`: model comparison. The bottleneck features  calculated in the previous notebook are taken as input of a very simple Convolutional Neural Network (CNN). The idea here is to compare the performance of the three pre-trained de models using a simple F1 score.
+* `common.py`: Functions used in the various notebooks.
