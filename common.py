@@ -7,15 +7,8 @@ import matplotlib.pyplot as plt
 from keras.preprocessing import image
 
 
-def path_to_images(img_dir):
-    images = glob.glob(img_dir + '/' + '*.jpg')
-    ids = [int(re.match('.*/([0-9]+).jpg', t).group(1)) for t in images]
-
-    return images, ids
-
-
 def encode_label(labels):
-    target = np.zeros(9, dtype = 'int')
+    target = np.zeros(9, dtype='int')
     for l in labels:
         target[l] = 1
     return target
@@ -26,9 +19,9 @@ def decode_label(x):
 
 
 def path_to_tensor(img_path):
-    img = image.load_img(img_path, target_size = (224, 224) )
+    img = image.load_img(img_path, target_size=(224, 224) )
     x = image.img_to_array(img)
-    return np.expand_dims(x, axis = 0)
+    return np.expand_dims(x, axis=0)
 
 
 def paths_to_tensor(img_paths):
@@ -76,8 +69,10 @@ def false_neg(y_true, y_pred):
 def precision(y_true, y_pred):
     return true_pos(y_true, y_pred) / (true_pos(y_true, y_pred) + false_pos(y_true, y_pred))
 
+
 def recall(y_true, y_pred):
     return true_pos(y_true, y_pred) / (true_pos(y_true, y_pred) + false_neg(y_true, y_pred))
+
 
 def f1_score(y_true, y_pred):
     return 2. / (1. / recall(y_true, y_pred) + 1. / precision(y_true, y_pred))
