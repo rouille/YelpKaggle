@@ -19,11 +19,12 @@ Each image is mapped to a business identification number. The businesses can be 
 8. ambience_is_classy
 9. good_for_kids
 
-## What's in this repository
+## What's in the Repository and Summary of Results
 Here is a short description of the different files available in this directory:
 * `eda.ipynb`: exploratory data analysis. This where we get familiar with the datasets. Data are loaded, statistics are derived, photographs are displayed, etc.
-* `split_data.ipynb`: preprocessing. The training dataset (234842 photographs) is split into a training (75%), validation(12.5%) and test (12.5%) datasets.
-* `bottleneck.ipynb`: bottleneck features from state-of-the-art pre-trained deep learning models. For a small fraction of the available training (20,000 tensors), validation (2,000 tensors) and test data (2,000 tensors), we store the last activation map before the fully connected layers for the VGG16, Xception and ResNet50 and InceptionV3 deep learning models.
-* `compare.ipynb`: model comparison. The bottleneck features calculated in the previous notebook are taken as input of a very simple Convolutional Neural Network (CNN). The idea here is to compare the performance of the four pre-trained models using a simple F1 score. VGG16: 0.75284, Xception: 0.74756, ResNet50: 0.76744, InceptionV3: 0.74086
-* `finetuning.ipynb`: fine-tune ResNet50. The last blocks of ResNet50 along with a simple CNN plugged on top of it are trained. A F1 score of 0.78466 is reached. Here, 50,000 training tensors are considered. Both, the validation and test datasets are composed of 5,000 photographs.
+* `split_data.ipynb`: preprocessing. The training dataset (234,842 photographs) is split into a training (75%), validation(12.5%) and test (12.5%) datasets.
+* `bottleneck.ipynb`: bottleneck features from state-of-the-art pre-trained deep learning models. For a small fraction of the available training (20,000 tensors), validation (2,000 tensors) and test data (2,000 tensors), we store the last activation map before the fully connected layers for the *VGG16*, *Xception*, *ResNet50* and *InceptionV3* deep learning models.
+* `compare.ipynb`: model comparison. The bottleneck features calculated in the previous notebook are taken as input of a very simple Convolutional Neural Network (CNN). The idea here is to compare the performance of the four pre-trained models using a simple F1 score. *VGG16*: **0.75284**, *Xception*: **0.74756**, *ResNet50*: **0.76744**, *InceptionV3*: **0.74086**
+* `xgboost.ipynb`: classification with the *XGBoost* algorithm. First, each of the bottleneck features calculated with ResNet50 in `bottleneck.ipynb` are reduced to 250 using a principal component analysis. Then, *XGBoost* is trained and the F1 score is derived using the test dataset: **0.75361**.
+* `finetuning.ipynb`: fine-tune *ResNet50*. The last blocks of *ResNet50* along with a simple CNN plugged on top of it are trained. A F1 score of **0.78466** is reached. Here, 50,000 training tensors are considered. Both, the validation and test datasets are composed of 5,000 photographs.
 * `common.py`: Functions used in the various notebooks.
