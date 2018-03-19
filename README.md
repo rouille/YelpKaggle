@@ -30,4 +30,13 @@ Here is a short description of the different files available in this directory:
 * `common.py`: Functions used in the various notebooks.
 
 ## Software and Libraries
-Python 3.5 is used for this project. 
+Python 3.5 is used for this project. Various libraries are used along the project. These include:
+* sklearn 0.19.1
+* keras 2.0.0. TensorFlow is used as a backend.
+* xgboost 0.7.post3
+* pandas 0.19.2
+* seaborn 0.7.1
+* PIL 4.0.0
+* numpy 1.12.1
+* matplotlib 2.0.0
+* tqdm 4.11.2 
