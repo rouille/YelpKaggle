@@ -28,6 +28,7 @@ Here is a short description of the different files available in this directory:
 * `xgboost.ipynb`: classification with the *XGBoost* algorithm. Each of the bottleneck features calculated with ResNet50 in `bottleneck.ipynb` are reduced to 200 features using a principal component analysis. Two analyses are then carried out for classifying images. The first scenario is to ignore the possible correlations among classes. In this case, the *XGBoost* model is trained on each class independently and the F1 score is derived: **0.75027**. The second scenario consists in exploiting the correlations using a [classifier chain](https://en.wikipedia.org/wiki/Classifier_chains). The F1 score is then calculated: **0.76238**.
 * `finetuning.ipynb`: fine-tune *ResNet50*. The last blocks of *ResNet50* along with a simple neural network plugged on top are trained. A F1 score of **0.78925** is reached. Here, 50,000 training tensors are considered. Both, the validation and test datasets are composed of 5,000 photographs.
 * `f1score.ipynb`: determine the optimal threshold for converting the probabilities obtained after classification -- as returned by the sigmoid activation function of the NN -- to labels (0 or 1). The best threshold is in the range [0.40,0.45]. 
+* `bottleneck_features_resnet50.py`: Get bottleneck features for the pre-trained *ResNet50* deep learning model.
 * `common.py`: Functions used in the various notebooks.
 
 ## Software and Libraries
