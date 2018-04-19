@@ -5,6 +5,7 @@ About two years ago, [Kaggle](https://www.kaggle.com/) hosted the Yelp Restauran
 
 Yelp asked contestants to build an algorithm that automatically predict attributes for restaurants using their user-submitted photographs. The goal of this project is to develop such a model.
 
+
 ## Datasets and Inputs
 All the photographs and attributes can be found in the data section of the competition on Kaggle (click [here](https://www.kaggle.com/c/yelp-restaurant-photo-classification/data)).
 
@@ -19,7 +20,12 @@ Each image is mapped to a business identification number. The businesses can be 
 8. ambience_is_classy
 9. good_for_kids
 
-Note that this is a multi-instance multi-label (MIML) classification problem. Each business has multiple photographs (117 images on average, see [eda.ipynb](eda.ipynb)) and predictions ned to be made at the business level. One option is to first obtain a features vector for each instance and then combine them accordingly. In this case, we will have one feature vector for each of the 2,000 and 10,000 businesses in the training and test datasets, respectively, which will be used in a standard supervised learning task. The other option is to map each instance to the label of its corresponding business and proceed to classification. Then, for each label, the output probabilities can be averaged. Multiple labels can be assigned to each business. This means it will be necessary to take the label dependencies into account for classification.
+This is a multi-instance multi-label (MIML) classification problem. Each business has multiple photographs (117 images on average, see [eda.ipynb](eda.ipynb)) and predictions need to be made at the business level.
+
+One option is to first obtain a features vector for each instance and then combine them accordingly. In this case, we will have one feature vector for each of the 2,000 and 10,000 businesses in the training and test datasets, respectively, which can be used in a standard supervised learning task. The other option is to map each instance to the label of its corresponding business and proceed to classification. Then, for each label, the output probabilities can be averaged. 
+
+Multiple labels can be assigned to each business. This means it will be necessary to take the label dependencies into account for classification.
+
 
 ## What's in the Repository and Summary of Results
 Here is a short description of the different files available in this directory:
@@ -32,6 +38,7 @@ Here is a short description of the different files available in this directory:
 * [`findBestThreshold.ipynb`](findBestThreshold.ipynb): determine the optimal threshold for converting the probabilities obtained after classification -- as returned by the sigmoid activation function of the NN -- to labels (0 or 1). Matthews correlation coefficients are used to find the best threshold for each label.
 * [`bottleneckFeaturesExtraction_resnet50.py`](bottleneckFeaturesExtraction_resnet50.py): Get bottleneck features for the pre-trained *ResNet50* deep learning model.
 * [`common.py`](common.py): Functions used in the various notebooks.
+
 
 ## Software and Libraries
 Python 3.5 is used for this project. Various libraries are used along the project. These include:
