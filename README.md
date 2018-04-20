@@ -18,11 +18,11 @@ All the photographs and attributes can be found in the data section of the compe
 8. ambience_is_classy
 9. good_for_kids
 
-This is a multi-instance multi-label (MIML) classification problem. Each business has multiple photographs (117 images on average, see [eda.ipynb](eda.ipynb)) and predictions need to be made at the business level.
+This is a multi-instance multi-label (MIML) classification problem. Each business has multiple photographs (117 images on average, see [eda.ipynb](eda.ipynb)) and predictions need to be made at the business level. We have then two options.
 
-One option is to first obtain a features vector for each instance and then combine them accordingly. In this case, we will have one feature vector for each of the 2,000 and 10,000 businesses in the training and test datasets, respectively, which can be used in a standard supervised learning task. The other option is to map each instance to the label of its corresponding business and proceed to classification. Then, for each label, the output probabilities can be averaged. 
+The first one is to derive a feature vector for each instance and combine them accordingly to get one feture vector per business. These inputs can then be used in a standard supervised learning task. The second option is to assign to each instance the label of its corresponding business and proceed to classification. Then, the output probabilities are averaged for each label. We decided to go with the latter where each image inherits the label from its business.
 
-Multiple labels can be assigned to each business. This means it will be necessary to take the label dependencies into account for classification.
+Also, multiple labels can be assigned to each business. This means it will be necessary to take the label dependencies into account for classification.
 
 
 ## What's in the Repository and Summary of Results
