@@ -34,6 +34,7 @@ def load_dataset(file):
     targets = data['target']
     return images, targets
 
+
 def group_images(img, file):
     img2biz = pd.read_csv(file, header = 0, names = ['photo','business'])
     img2biz = img2biz[img2biz['photo'].isin(img)]
@@ -46,6 +47,7 @@ def group_images(img, file):
         photos = biz2img.get_value(b,'photo')
         group.append([img2idx[p] for p in photos])
     return group
+
 
 def history(model):
     plt.figure(figsize = (15, 5) )
