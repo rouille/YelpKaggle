@@ -44,7 +44,7 @@ def group_images(img, file):
     img2idx = dict(zip(img,range(len(img))))
     group = []
     for b in biz:
-        photos = biz2img.get_value(b,'photo')
+        photos = biz2img.at[b,'photo']
         group.append([img2idx[p] for p in photos])
     return group
 
