@@ -7,7 +7,7 @@ Yelp asked contestants to build an algorithm that automatically predict attribut
 
 
 ## Datasets and Inputs
-All the photographs and attributes can be found in the data section of the competition on Kaggle (click [here](https://www.kaggle.com/c/yelp-restaurant-photo-classification/data)). Each image is mapped to a business identification number. The businesses can be tagged with 9 different labels:
+All the photographs and attributes can be found in the data section of the competition on Kaggle (click [here](https://www.kaggle.com/c/yelp-restaurant-photo-classification/data)). Each image is mapped to a business identification number and each business is tagged as follow:
 1. good_for_lunch
 2. good_for_dinner
 3. takes_reservations
@@ -25,17 +25,17 @@ The first one is to derive a feature vector for each instance and combine them a
 Also, multiple labels can be assigned to each business. This means it will be necessary to take the label dependencies into account for classification.
 
 
-## What's in the Repository and Summary of Results
+## List of Files in the Repository and Short Description
 You will find below a short description of what we tackle in the various files available in this repository.
 * [`eda.ipynb`](eda.ipynb): exploratory data analysis. This where we get familiar with the datasets. Data are loaded, statistics are derived, photographs are displayed, etc.
 * [`split_data.ipynb`](split_data.ipynb): preprocessing. The training dataset (234,842 photographs) is split into a training (75%), validation (12.5%) and test (12.5%) datasets.
-* [`bottleneckFeaturesExtraction.ipynb`](bottleneckFeaturesExtraction.ipynb): bottleneck features from state-of-the-art pre-trained deep learning models are extracted. For a small fraction of the available training (20,000 tensors), validation (2,000 tensors) and test data (2,000 tensors), we store the last activation map before the fully connected layers for the *VGG16*, *Xception*, *ResNet50* and *InceptionV3* deep learning models.
+* [`bottleneckFeaturesExtraction.ipynb`](bottleneckFeaturesExtraction.ipynb): bottleneck features from state-of-the-art pre-trained deep learning models are extracted. For a small fraction of the available training (20,000 tensors), validation (2,000 tensors) and test data (2,000 tensors), we store the last activation map before the fully connected layers for the *VGG16*, *Xception*, *ResNet50* and *InceptionV3* models.
 * [`pretrainedModelsComparison.ipynb`](pretrainedModelsComparison.ipynb): model comparison. The bottleneck features of the various models extracted previously are taken as input of a very simple neural network. The idea here is to compare the performance of the pre-trained models using a simple F1 score at the instance level. *ResNet50* is the best performing model and will be used as a bottleneck feature extractor in this project.
 * [`bottleneckFeaturesExtraction_resnet50.py`](bottleneckFeaturesExtraction_resnet50.py): Get bottleneck features for the pre-trained *ResNet50* deep learning model.
-* [`xgboost.ipynb`](xgboost.ipynb): classification is done using the *XGBoost* algorithm. The ResNet50 bottleneck features are reduced to 200 features using a principal component analysis. Two analyses are then carried out for classifying images. The first scenario is to ignore the label dependencies. In this case, the *XGBoost* model is trained on each class independently and the F1 score is derived: **0.76503**. The second scenario consists in exploiting the dependencies using a [classifier chain](https://en.wikipedia.org/wiki/Classifier_chains). The F1 score is then calculated: **0.78695**.
-* [`nn.ipynb`](nn.ipynb): classification is done using a multi-output neural network. The model is trained on the ResNet50 bottleneck features. The F1 score is calculated on the test dataset: **0.83160**.
-* [`findBestThreshold.ipynb`](findBestThreshold.ipynb): determine the optimal threshold for converting the probabilities obtained after classification -- as returned by the sigmoid activation function of the NN -- to labels (0 or 1). The Matthews correlation coefficients are used to find the best threshold for each label.
-* [`common.py`](common.py): Functions used in the various notebooks.
+* [`xgboost.ipynb`](xgboost.ipynb): classification is done using the *XGBoost* algorithm. The *ResNet50* bottleneck features are grouped by business and averaged to obtain a single feature vector for each business. Each of these inputs are then reduced to 200 features using a principal component analysis. Two analyses are then carried out for classifying images. The first scenario is to ignore the label dependencies. In this case, the *XGBoost* model is trained on each class independently and the F1 score is calculated on the test dataset: **0.76503**. The second scenario consists in exploiting the dependencies using a [classifier chain](https://en.wikipedia.org/wiki/Classifier_chains). Using the test dataset, the F1 score is then: **0.78695**.
+* [`nn.ipynb`](nn.ipynb): classificatlon is done using a multi-output neural network. The model is trained on the *ResNet50* bottleneck features. Predictions are then grouped by business and averaged to obtain a single prediction for for each business. The F1 score is calculated on the test dataset: **0.83160**.
+* [`findBestThreshold.ipynb`](findBestThreshold.ipynb): determine the optimal threshold for converting the probabilities obtained after classification -- as returned by the sigmoid activation function of the NN -- to labels (0 or 1). Matthews correlation coefficients are used to find the best threshold for each label.
+* [`common.py`](common.py): Functions used across the various notebooks.
 
 
 ## Software and Libraries
