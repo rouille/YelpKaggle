@@ -28,6 +28,11 @@ def paths_to_tensor(img_paths):
     return np.vstack(tensors)
 
 
+def paths_to_tensor_nobar(img_paths):
+    tensors = [path_to_tensor(img_path) for img_path in img_paths]
+    return np.vstack(tensors)
+
+
 def load_dataset(file):
     data = np.load(file)
     images = data['img']
