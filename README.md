@@ -25,7 +25,7 @@ The first one is to derive a feature vector for each instance and combine them a
 Also, multiple labels can be assigned to each business. This means it will be necessary to take the label dependencies into account for classification.
 
 
-## List of Files in the Repository and Short Description
+## Files Description
 You will find below a short description of what we tackle in the various files available in this repository.
 * [`eda.ipynb`](eda.ipynb): exploratory data analysis. This where we get familiar with the datasets. Data are loaded, statistics are derived, photographs are displayed, etc.
 * [`split_data.ipynb`](split_data.ipynb): preprocessing. The training dataset (234,842 photographs) is split into a training (75%), validation (12.5%) and test (12.5%) datasets.
