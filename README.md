@@ -50,3 +50,7 @@ Python 3.5 is used for this project. Various libraries are used along the projec
 * numpy 1.12.1
 * matplotlib 2.0.0
 * tqdm 4.11.2
+
+
+## Running the notebooks
+Bottleneck features and neural networks have been respectively calculated and trained with a GPU compute instance on AWS (Amazon Web Services).
