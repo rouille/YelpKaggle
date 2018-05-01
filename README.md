@@ -52,5 +52,5 @@ Python 3.5 is used for this project. Various libraries are used along the projec
 * tqdm 4.11.2
 
 
-## Running the notebooks
+## Running the Notebooks
 Bottleneck features and neural networks have been respectively calculated and trained with a GPU compute instance on AWS (Amazon Web Services). The Deep Learning AMI available in the AWS Marketplace has been used. Once logged on the EC2 instance, The TensorFlow (Python 3) environment is selected. Do not forget to add a custom TCP rule to be able to reach the notebook. Usually, Jupyter notebook runs on port 8888. 
