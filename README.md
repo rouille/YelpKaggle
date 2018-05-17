@@ -22,7 +22,7 @@ This is a multi-instance multi-label (MIML) classification problem. Each busines
 
 The first one is to derive a feature vector for each instance and combine them accordingly to get one feature vector per business. These inputs can then be used in a standard supervised learning task. The second option is to assign to each instance the label of its corresponding business and proceed to classification. Then, the output probabilities are averaged for each label. We have investigated both options.
 
-Also, multiple labels can be assigned to each business. This means it will be necessary to take the label dependencies into account for classification.
+Also, multiple labels can be assigned to each business. This means it is necessary to take the label dependencies into account for classification.
 
 
 ## Files Description
